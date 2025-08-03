@@ -54,6 +54,7 @@ func setupLogger(env string) *slog.Logger {
 
 }
 
+
 func setupCustomSlog() *slog.Logger {
 	opts := slogcustom.CustomHandlerOptions{
 		SlogOpts: &slog.HandlerOptions{
