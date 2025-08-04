@@ -8,6 +8,7 @@ import (
 	"log/slog"
 	"os"
 	"qc/internal/lib/logger/slogcustom"
+	"qc/internal/repository/postgres"
 )
 
 const (
@@ -22,6 +23,8 @@ func main() {
 	log := setupLogger(cfg.Env)
 
 	log.Info("starting server", "env", cfg.Env)
+
+	postgres.InitDB()
 
 	router := gin.Default()
 	router.GET("/", func(c *gin.Context) {
