@@ -13,7 +13,6 @@ type User struct {
     CreatedAt time.Time `json:"created_at" gorm:"autoCreateTime"`
     UpdatedAt time.Time `json:"updated_at" gorm:"autoUpdateTime"`
     
-    // Связи
     Pins  []Pin  `json:"pins,omitempty" gorm:"foreignKey:UserID"`
     Chats []Chat `json:"chats,omitempty" gorm:"foreignKey:UserID"`
     GroupChats []GroupChat `json:"group_chats,omitempty" gorm:"many2many:group_chat_users;"`

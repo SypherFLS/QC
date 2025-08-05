@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"qc/internal/config"
+	"qc/internal/repository/models"
 
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -27,4 +28,11 @@ func InitDB() {
 	if err != nil {
 		log.Fatalf("failed connection to database: %v", err)
 	}
+	
+	
+	err = DB.AutoMigrate(&models.User{}, &models.Message{}, &models.Chat{}, &models.GroupChat{}, &models.Pin{})
+	if err != nil {
+		log.Fatalf("failed migration to data base: %v", err)
+	}
+	log.Println("connected to database")
 }
